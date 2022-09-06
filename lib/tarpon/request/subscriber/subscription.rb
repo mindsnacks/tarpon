@@ -10,10 +10,10 @@ module Tarpon
           @product_id = product_id
         end
 
-        def defer(expiry_time_ms:)
+        def defer(expiry_time_ms:, &block)
           body = { expiry_time_ms: expiry_time_ms }
 
-          perform(method: :post, path: "#{path}/defer", key: :secret, body: body)
+          perform(method: :post, path: "#{path}/defer", key: :secret, body: body, &block)
         end
 
         private

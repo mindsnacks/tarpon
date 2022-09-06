@@ -10,17 +10,17 @@ module Tarpon
           @entitlement_identifier = entitlement_identifier
         end
 
-        def grant_promotional(duration:, start_time_ms: nil)
+        def grant_promotional(duration:, start_time_ms: nil, &block)
           body = {
             duration: duration,
             start_time_ms: start_time_ms
           }
 
-          perform(method: :post, path: "#{path}/promotional", key: :secret, body: body)
+          perform(method: :post, path: "#{path}/promotional", key: :secret, body: body, &block)
         end
 
-        def revoke_promotional
-          perform(method: :post, path: "#{path}/revoke_promotionals", key: :secret)
+        def revoke_promotional(&block)
+          perform(method: :post, path: "#{path}/revoke_promotionals", key: :secret, &block)
         end
 
         private

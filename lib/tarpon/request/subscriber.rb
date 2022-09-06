@@ -8,12 +8,12 @@ module Tarpon
         @app_user_id = app_user_id
       end
 
-      def get_or_create # rubocop:disable Naming/AccessorMethodName
-        perform(method: :get, path: path, key: :public)
+      def get_or_create(&block) # rubocop:disable Naming/AccessorMethodName
+        perform(method: :get, path: path, key: :public, &block)
       end
 
-      def delete
-        perform(method: :delete, path: path, key: :secret)
+      def delete(&block)
+        perform(method: :delete, path: path, key: :secret, &block)
       end
 
       def entitlements(entitlement_identifier)

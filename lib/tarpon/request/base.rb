@@ -17,12 +17,13 @@ module Tarpon
 
       protected
 
-      def perform(method:, path:, key:, headers: {}, body: nil)
+      def perform(method:, path:, key:, headers: {}, body: nil, &block)
         HTTP
           .timeout(@client.timeout)
           .then { |http_client| @client.http_middleware.call(http_client) }
           .auth("Bearer #{api_key(key)}")
           .headers(headers.merge(DEFAULT_HEADERS))
+          .then { |http_client| block ? block.call(http_client) : http_client }
           .send(method, "#{@client.base_uri}#{path}", json: body&.compact)
           .then { |http_response| handle_response(http_response) }
       rescue HTTP::TimeoutError => e
