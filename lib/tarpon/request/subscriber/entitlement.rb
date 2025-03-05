@@ -12,8 +12,8 @@ module Tarpon
 
         def grant_promotional(start_time_ms: nil, end_time_ms: nil, &block)
           body = {
-            end_time_ms: end_time_ms,
-            start_time_ms: start_time_ms
+            start_time_ms: start_time_ms,
+            end_time_ms: end_time_ms
           }
 
           perform(method: :post, path: "#{path}/promotional", key: :secret, body: body, &block)
