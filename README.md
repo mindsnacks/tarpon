@@ -102,7 +102,7 @@ Tarpon::Client
 Tarpon::Client
   .subscriber('app_user_id')
   .entitlements('entitlement_id')
-  .grant_promotional(duration: 'daily', start_time_ms: 1582023714931)
+  .grant_promotional(start_time_ms: 1582023714931, end_time_ms: 1582023715854)
 ```
 
 Be aware that RevenueCat doesn't create the subscriber automatically. If the `app_user_id` doesn't exist, the request will fail with a `404 Not Found`. Perform a `Tarpon::Client.subscriber('app_user_id').get_or_create` beforehand to make sure the subscriber exists when granting promotional entitlements:
@@ -113,7 +113,7 @@ Tarpon::Client.subscriber('app_user_id').get_or_create # subscriber is created
 Tarpon::Client
   .subscriber('app_user_id')
   .entitlements('entitlement_id')
-  .grant_promotional(duration: 'daily', start_time_ms: 1582023714931)
+  .grant_promotional(start_time_ms: 1582023714931, end_time_ms: 1582023715854)
 ```
 
 Check the [endpoint reference](https://docs.revenuecat.com/reference#grant-a-promotional-entitlement) for valid `duration` values, Tarpon does not perform any input validation.

@@ -10,9 +10,9 @@ module Tarpon
           @entitlement_identifier = entitlement_identifier
         end
 
-        def grant_promotional(duration:, start_time_ms: nil, &block)
+        def grant_promotional(start_time_ms: nil, end_time_ms: nil, &block)
           body = {
-            duration: duration,
+            end_time_ms: end_time_ms,
             start_time_ms: start_time_ms
           }
 
