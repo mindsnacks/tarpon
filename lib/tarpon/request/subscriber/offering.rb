@@ -12,7 +12,8 @@ module Tarpon
         end
 
         def list(platform, &block)
-          response = perform(method: :get, path: path.to_s, headers: { 'x-platform': platform.to_s }, key: :public, &block)
+          response =
+            perform(method: :get, path: path.to_s, headers: { 'x-platform': platform.to_s }, key: :public, &block)
           return response unless response.success?
 
           Tarpon::Entity::Offerings.new(**response.raw)

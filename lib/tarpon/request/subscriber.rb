@@ -8,7 +8,7 @@ module Tarpon
         @app_user_id = app_user_id
       end
 
-      def get_or_create(&block) # rubocop:disable Naming/AccessorMethodName
+      def get_or_create(&block)
         perform(method: :get, path: path, key: :public, &block)
       end
 

@@ -19,3 +19,6 @@ Metrics/MethodLength:
 Style/FrozenStringLiteralComment:
   Exclude:
     - 'bin/*'
+
+Gemspec/DevelopmentDependencies:
+  EnforcedStyle: gemspec
