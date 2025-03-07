@@ -17,7 +17,7 @@ module Tarpon
 
       protected
 
-      def perform(method:, path:, key:, headers: {}, body: nil, &block)
+      def perform(method:, path:, key:, headers: {}, body: nil, &block) # rubocop:disable Metrics/AbcSize
         HTTP
           .timeout(@client.timeout)
           .then { |http_client| @client.http_middleware.call(http_client) }

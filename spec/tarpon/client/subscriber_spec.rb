@@ -61,7 +61,7 @@ RSpec.describe Tarpon::Client do
       describe '.grant_promotional' do
         it_behaves_like 'an http call to RevenueCat responding with subscriber object',
                         method: :post, api_key: :secret do
-          let(:body) { { duration: 'weekly', start_time_ms: 123 } }
+          let(:body) { { start_time_ms: 123, end_time_ms: 345 } }
           let(:client_call) { entitlement.grant_promotional(**body) }
           let(:uri) do
             "#{described_class.base_uri}/subscribers/#{app_user_id}/entitlements/#{entitlement_id}/promotional"
